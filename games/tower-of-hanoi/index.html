@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برج هانوي - Tower of Hanoi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: #333;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 1000;
+        }
+        .back-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <a href="../../index.html" class="back-btn">🏠 الرئيسية</a>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>برج هانوي</h1>
+            </div>
+            
+            <div class="game-stats">
+                <div class="stat-item">
+                    <span class="stat-label">الحركات</span>
+                    <span class="stat-value" id="move-count">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">الحد الأدنى</span>
+                    <span class="stat-value" id="min-moves">7</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">الوضع</span>
+                    <span class="stat-value" id="game-mode-display">عادي</span>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <h3>التحكم</h3>
+                <div class="button-group">
+                    <button id="reset-btn" class="btn btn-primary">
+                        <span class="btn-icon">↻</span>
+                        إعادة تعيين
+                    </button>
+                    <button id="auto-solve-btn" class="btn btn-success">
+                        <span class="btn-icon">⚡</span>
+                        حل تلقائي
+                    </button>
+                    <button id="shuffle-btn" class="btn btn-warning">
+                        <span class="btn-icon">🔀</span>
+                        خلط الأقراص
+                    </button>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>الإعدادات</h3>
+                <div class="setting-item">
+                    <label for="disk-slider">عدد الأقراص</label>
+                    <div class="slider-container">
+                        <input type="range" id="disk-slider" min="3" max="7" value="3">
+                        <span class="slider-value" id="disk-count-display">3</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instructions-section">
+                <h3>كيفية اللعب</h3>
+                <div id="normal-instructions" class="instructions">
+                    <p>انقل جميع الأقراص من البرج الأول إلى البرج الثالث</p>
+                    <ul>
+                        <li>نقل قرص واحد في كل مرة</li>
+                        <li>لا يمكن وضع قرص أكبر فوق أصغر</li>
+                        <li>انقر على البرج لاختياره ثم الهدف</li>
+                    </ul>
+                </div>
+                <div id="shuffle-instructions" class="instructions" style="display: none;">
+                    <p>رتب جميع الأقراص بشكل صحيح على أي برج</p>
+                    <ul>
+                        <li>الأقراص موزعة عشوائياً</li>
+                        <li>الأكبر في الأسفل والأصغر في الأعلى</li>
+                        <li>انقر على البرج لاختياره ثم الهدف</li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <main class="game-area">
+            <div class="game-container">
+                <div class="game-board" id="game-board">
+                    <div class="tower" id="tower-1" data-tower="1">
+                        <div class="tower-base"></div>
+                        <div class="tower-pole"></div>
+                        <div class="disks" id="disks-1"></div>
+                    </div>
+                    <div class="tower" id="tower-2" data-tower="2">
+                        <div class="tower-base"></div>
+                        <div class="tower-pole"></div>
+                        <div class="disks" id="disks-2"></div>
+                    </div>
+                    <div class="tower" id="tower-3" data-tower="3">
+                        <div class="tower-base"></div>
+                        <div class="tower-pole"></div>
+                        <div class="disks" id="disks-3"></div>
+                    </div>
+                </div>
+
+                <div class="message-container">
+                    <div class="message" id="message"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+:root {
+    --primary: #FF6B6B;
+    --secondary: #4ECDC4;
+    --accent: #FFE66D;
+    --dark: #2c3e50;
+    --light: #f7f9fc;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: var(--light);
+    margin: 0;
+    padding: 0;
+    color: var(--dark);
+    direction: rtl;
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.main-header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    color: var(--white);
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-header h1 {
+    font-size: 3rem;
+    margin: 0;
+    font-weight: 900;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
+
+.main-header p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* Grid Layout */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    flex: 1;
+}
+
+/* Game Card */
+.game-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--dark);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid transparent;
+}
+
+.game-card:hover:not(.coming-soon) {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: var(--secondary);
+}
+
+.card-image {
+    height: 180px;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    position: relative;
+    background: radial-gradient(circle, #fff, #f0f0f0);
+}
+
+/* Specific Card Styles */
+.shadow-img {
+    background: #e3f2fd;
+}
+.shadow-img .shadow {
+    position: absolute;
+    color: black;
+    filter: brightness(0);
+    opacity: 0.2;
+    transform: translate(10px, 10px) scale(1.1);
+}
+
+.card-content {
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-content h3 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.card-content p {
+    margin: 0 0 20px;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.play-btn {
+    display: inline-block;
+    background: var(--secondary);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.game-card:hover .play-btn {
+    background: var(--primary);
+}
+
+/* Coming Soon Style */
+.coming-soon {
+    opacity: 0.8;
+    cursor: default;
+    filter: grayscale(0.6);
+}
+
+.coming-soon:hover {
+    transform: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.status-badge {
+    background: #ccc;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    display: inline-block;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    color: #888;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .main-header h1 {
+        font-size: 2rem;
+    }
+}

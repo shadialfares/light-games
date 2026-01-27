@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة الذاكرة السمعية - سيمون</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: #333;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 1000;
+        }
+        .back-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <a href="../../index.html" class="back-btn">🏠 الرئيسية</a>
+    
+    <div class="app-container">
+        <header class="game-header">
+            <h1>🎮 الذاكرة السمعية (سيمون)</h1>
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="label">المستوى</span>
+                    <span class="value" id="level">1</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">أفضل نتيجة</span>
+                    <span class="value" id="high-score">0</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="game-area">
+            <div class="simon-board">
+                <div class="simon-btn green" data-color="green" id="btn-green"></div>
+                <div class="simon-btn red" data-color="red" id="btn-red"></div>
+                <div class="simon-btn yellow" data-color="yellow" id="btn-yellow"></div>
+                <div class="simon-btn blue" data-color="blue" id="btn-blue"></div>
+                
+                <div class="center-controls">
+                    <div class="game-status" id="status-text">اضغط ابدأ</div>
+                    <button id="start-btn" class="start-btn">ابدأ اللعب ▶</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <p>💡 تذكر النمط وكرره! استمع للأصوات وشاهد الألوان.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

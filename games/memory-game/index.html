@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة الذاكرة - Memory Game</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: #333;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 1000;
+        }
+        .back-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <a href="../../index.html" class="back-btn">🏠 الرئيسية</a>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>لعبة الذاكرة</h1>
+            </div>
+            
+            <div class="game-stats">
+                <div class="stat-item">
+                    <span class="stat-label">الحركات</span>
+                    <span class="stat-value" id="moves-count">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">الوقت</span>
+                    <span class="stat-value" id="timer">00:00</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">الأزواج</span>
+                    <span class="stat-value" id="pairs-found">0/8</span>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <h3>التحكم</h3>
+                <div class="button-group">
+                    <button id="new-game-btn" class="btn btn-primary">
+                        <span class="btn-icon">🔄</span>
+                        لعبة جديدة
+                    </button>
+                    <button id="pause-btn" class="btn btn-secondary">
+                        <span class="btn-icon">⏸️</span>
+                        إيقاف
+                    </button>
+                    <button id="hint-btn" class="btn btn-warning">
+                        <span class="btn-icon">💡</span>
+                        تلميح
+                    </button>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>الإعدادات</h3>
+                <div class="setting-item">
+                    <label for="difficulty">المستوى</label>
+                    <select id="difficulty" class="difficulty-select">
+                        <option value="easy">سهل (4x3)</option>
+                        <option value="medium" selected>متوسط (4x4)</option>
+                        <option value="hard">صعب (6x4)</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="theme">السمة</label>
+                    <select id="theme" class="theme-select">
+                        <option value="colors">الألوان</option>
+                        <option value="emoji">رموز تعبيرية</option>
+                        <option value="shapes">أشكال</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="instructions-section">
+                <h3>كيفية اللعب</h3>
+                <div class="instructions">
+                    <p>ابحث عن الأزواج المتطابقة من البطاقات!</p>
+                    <ul>
+                        <li>انقر على بطاقة لقلبها</li>
+                        <li>ابحث عن البطاقة المماثلة</li>
+                        <li>جمع كل الأزواج للفوز</li>
+                        <li>استخدم التذكير عند الحاجة</li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <main class="game-area">
+            <div class="game-container">
+                <div class="game-board" id="game-board">
+                    <!-- Cards will be generated here -->
+                </div>
+
+                <div class="message-container">
+                    <div class="message" id="message"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

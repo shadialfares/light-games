@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة الترتيب - Ordering Game</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: #333;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 1000;
+        }
+        .back-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <a href="../../index.html" class="back-btn">🏠 الرئيسية</a>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>لعبة الترتيب</h1>
+            </div>
+            
+            <div class="game-stats">
+                <div class="stat-item">
+                    <span class="stat-label">المستوى</span>
+                    <span class="stat-value" id="level">1</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">الوقت</span>
+                    <span class="stat-value" id="timer">00:00</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">النقاط</span>
+                    <span class="stat-value" id="score">0</span>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <h3>التحكم</h3>
+                <div class="button-group">
+                    <button id="new-game-btn" class="btn btn-primary">
+                        <span class="btn-icon">🔄</span>
+                        لعبة جديدة
+                    </button>
+                    <button id="check-btn" class="btn btn-success">
+                        <span class="btn-icon">✓</span>
+                        تحقق
+                    </button>
+                    <button id="hint-btn" class="btn btn-warning">
+                        <span class="btn-icon">💡</span>
+                        تلميح
+                    </button>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>الإعدادات</h3>
+                <div class="setting-item">
+                    <label for="game-mode">نوع الترتيب</label>
+                    <select id="game-mode" class="mode-select">
+                        <option value="numbers">أرقام</option>
+                        <option value="letters">حروف</option>
+                        <option value="mixed">مختلط</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="difficulty">المستوى</label>
+                    <select id="difficulty" class="difficulty-select">
+                        <option value="easy">سهل (3-5 عناصر)</option>
+                        <option value="medium" selected>متوسط (6-8 عناصر)</option>
+                        <option value="hard">صعب (9-12 عنصر)</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="order-direction">اتجاه الترتيب</label>
+                    <select id="order-direction" class="direction-select">
+                        <option value="ascending">تصاعدي</option>
+                        <option value="descending">تنازلي</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="instructions-section">
+                <h3>كيفية اللعب</h3>
+                <div class="instructions">
+                    <p>رتب العناصر بالترتيب الصحيح!</p>
+                    <ul>
+                        <li>اسحب وأفلت العناصر لترتيبها</li>
+                        <li>استخدم التلميحات عند الحاجة</li>
+                        <li>اضغط تحقق للتحقق من الإجابة</li>
+                        <li>اجمع النقاط والتقدم للمستوى التالي</li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <main class="game-area">
+            <div class="game-container">
+                <div class="game-info-top">
+                    <div class="target-display">
+                        <span class="target-label">الترتيب المطلوب:</span>
+                        <span class="target-value" id="target-order">تصاعدي</span>
+                    </div>
+                    <div class="attempts-display">
+                        <span class="attempts-label">المحاولات:</span>
+                        <span class="attempts-value" id="attempts">0</span>
+                    </div>
+                </div>
+
+                <div class="game-board" id="game-board">
+                    <!-- Items will be generated here -->
+                </div>
+
+                <div class="success-animation" id="success-animation">
+                    <div class="success-content">
+                        <div class="success-icon">🎉</div>
+                        <div class="success-message">ممتاز!</div>
+                        <div class="success-details">أحسنت الترتيب!</div>
+                    </div>
+                </div>
+
+                <div class="message-container">
+                    <div class="message" id="message"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+:root {
+    --primary: #FF6B6B;
+    --secondary: #4ECDC4;
+    --dark: #2d3436;
+    --light: #f7f1e3;
+    --sidebar-bg: #ffffff;
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body {
+    background-color: #f0f2f5;
+    background-image: radial-gradient(#dfe6e9 1px, transparent 1px);
+    background-size: 20px 20px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    margin-bottom: 15px;
+    margin-top: 40px; /* Space for back button */
+}
+
+.game-header h1 {
+    font-size: 1.5rem;
+    color: var(--dark);
+}
+
+.controls-top {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-icon {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 12px;
+    background: #f1f2f6;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon:hover {
+    transform: scale(1.1);
+    background: #e1e2e6;
+}
+
+.btn-icon.danger {
+    color: #ff4757;
+    background: #ffeaa7;
+}
+
+.btn-icon.success {
+    color: #2ed573;
+    background: #dff9fb;
+}
+
+.main-content {
+    display: flex;
+    gap: 15px;
+    flex: 1;
+    min-height: 0; /* Important for nested flex scroll */
+}
+
+/* Sidebars */
+.tools-sidebar, .templates-sidebar {
+    width: 200px;
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: var(--shadow);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tool-section h3, .templates-sidebar h3 {
+    font-size: 1rem;
+    color: #636e72;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Tools Grid */
+.tools-grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.tool-btn {
+    width: 50px;
+    height: 50px;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    background: #f1f2f6;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tool-btn.active {
+    background: #dff9fb;
+    border-color: var(--secondary);
+    transform: scale(1.1);
+}
+
+/* Size Slider */
+.size-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;
+}
+
+input[type=range] {
+    width: 100%;
+}
+
+.size-preview {
+    width: 10px;
+    height: 10px;
+    background: black;
+    border-radius: 50%;
+    transition: all 0.1s;
+}
+
+/* Colors Grid */
+.colors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.color-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.color-btn:hover {
+    transform: scale(1.2);
+    z-index: 2;
+}
+
+.color-btn.active {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 3px var(--dark);
+    z-index: 2;
+}
+
+.color-picker {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Templates */
+.templates-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.template-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.template-btn:hover {
+    background: #f9f9f9;
+}
+
+.template-btn.active {
+    border-color: var(--primary);
+    background: #fff0f0;
+    color: var(--primary);
+}
+
+/* Canvas Area */
+.canvas-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #dfe6e9;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.canvas-wrapper {
+    background: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    position: relative;
+    cursor: crosshair;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#drawing-canvas {
+    display: block;
+    touch-action: none; /* Important for touch events */
+}
+
+.template-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicking through to canvas */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .tools-sidebar, .templates-sidebar {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 10px;
+        align-items: center;
+    }
+
+    .tool-section {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: max-content;
+        padding: 0 10px;
+        border-left: 1px solid #eee;
+    }
+
+    .colors-grid {
+        display: flex;
+        gap: 5px;
+    }
+    
+    .templates-grid {
+        flex-direction: row;
+    }
+    
+    .template-btn {
+        min-width: 100px;
+    }
+}

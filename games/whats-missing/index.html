@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة ماذا اختفى؟</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: #333;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 1000;
+        }
+        .back-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <a href="../../index.html" class="back-btn">🏠 الرئيسية</a>
+    
+    <div class="app-container">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <header class="game-header">
+                <h1>🕵️ ماذا اختفى؟</h1>
+                <p>ركز جيداً واكتشف العنصر المفقود!</p>
+            </header>
+
+            <div class="settings-box">
+                <div class="setting-group">
+                    <label>اختر المجموعة:</label>
+                    <div class="options-grid" id="category-options">
+                        <button class="opt-btn selected" data-value="animals">🦁 حيوانات</button>
+                        <button class="opt-btn" data-value="fruits">🍎 فواكه</button>
+                        <button class="opt-btn" data-value="vehicles">🚗 مركبات</button>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label>المستوى:</label>
+                    <div class="options-grid" id="difficulty-options">
+                        <button class="opt-btn selected" data-value="easy">سهل (3)</button>
+                        <button class="opt-btn" data-value="medium">متوسط (5)</button>
+                        <button class="opt-btn" data-value="hard">صعب (7)</button>
+                    </div>
+                </div>
+
+                <button id="start-btn" class="main-action-btn">ابدأ اللعب ▶</button>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen">
+            <div class="level-info">
+                <span>نقاط: <b id="score">0</b></span>
+                <span>المحاولة: <b id="round">1</b>/5</span>
+                <button id="settings-btn" class="settings-btn" title="العودة للإعدادات">⚙️ إعدادات</button>
+            </div>
+
+            <div class="game-content">
+                <h2 id="phase-text" class="phase-text">احفظ هذه الأشكال!</h2>
+                <div class="timer-bar"><div id="timer-fill"></div></div>
+                
+                <div id="items-grid" class="items-grid">
+                    <!-- Items will appear here -->
+                </div>
+
+                <div id="options-area" class="options-area hidden">
+                    <h3>ما الشكل الذي اختفى؟</h3>
+                    <div id="choices-grid" class="choices-grid">
+                        <!-- Choices will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="screen">
+            <div class="result-content">
+                <div id="result-emoji">🏆</div>
+                <h2 id="result-title">أحسنت!</h2>
+                <p>لقد حصلت على <span id="final-score">0</span> نقطة</p>
+                <button id="restart-btn" class="main-action-btn">العب مرة أخرى ↺</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

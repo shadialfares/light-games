@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>لعبة توصيل الدوائر</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: #333;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 1000;
+        }
+        .back-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <a href="../../index.html" class="back-btn">🏠 الرئيسية</a>
+    <div class="game-container">
+        <div class="header">
+            <h1>🎯 لعبة توصيل الدوائر</h1>
+            <div class="info">
+                <div class="level-info">
+                    <span>المستوى: <span id="level">1</span></span>
+                </div>
+                <div class="score-info">
+                    <span>النقاط: <span id="score">0</span></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-board" id="gameBoard">
+            <canvas id="canvas"></canvas>
+        </div>
+        
+        <div class="controls">
+            <button id="resetBtn" class="btn">إعادة المحاولة</button>
+            <button id="nextLevelBtn" class="btn" style="display: none;">المستوى التالي</button>
+        </div>
+        
+        <div class="message" id="message"></div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

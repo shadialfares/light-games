@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة الظلال للأطفال</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            background: white;
+            padding: 8px 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 100;
+        }
+        .back-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        <a href="../../index.html" class="back-btn">🏠 الرئيسية</a>
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>الإعدادات ⚙️</h2>
+                <button id="close-sidebar" class="mobile-only">✕</button>
+            </div>
+            
+            <div class="setting-group">
+                <h3>الفئة</h3>
+                <div class="options-grid">
+                    <button class="category-btn active" data-category="mixed">🔀 مختلط</button>
+                    <button class="category-btn" data-category="animals">🦁 حيوانات</button>
+                    <button class="category-btn" data-category="fruits">🍎 فواكه</button>
+                    <button class="category-btn" data-category="shapes">🔶 أشكال</button>
+                    <button class="category-btn" data-category="transport">🚗 مركبات</button>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h3>المستوى</h3>
+                <div class="options-grid">
+                    <button class="level-btn active" data-level="easy">سهل (3)</button>
+                    <button class="level-btn" data-level="medium">متوسط (6)</button>
+                    <button class="level-btn" data-level="hard">صعب (9)</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Game Content -->
+        <div class="game-container">
+            <button id="menu-btn" class="mobile-only">☰ الإعدادات</button>
+            <header>
+            <h1>لعبة مطابقة الظلال 🦁</h1>
+            <p>اسحب الصورة وضعها فوق ظلها الصحيح!</p>
+        </header>
+
+        <div class="score-board">
+            <span>النتيجة: <b id="score">0</b></span>
+            <button id="restart-btn" onclick="initGame()">لعبة جديدة 🔄</button>
+        </div>
+
+        <div class="game-area">
+            <div class="shadows-container" id="shadows-container">
+                <!-- Shadows will be generated here -->
+            </div>
+            <div class="items-container" id="items-container">
+                <!-- Draggable items will be generated here -->
+            </div>
+        </div>
+
+        <div id="success-message" class="hidden">
+            <h2>أحسنت! 🎉</h2>
+            <p>لقد طابقت جميع الصور!</p>
+            <button onclick="initGame()">العب مرة أخرى</button>
+        </div>
+    </div>
+    </div> <!-- End of main-wrapper -->
+
+    <script src="script.js"></script>
+</body>
+</html>

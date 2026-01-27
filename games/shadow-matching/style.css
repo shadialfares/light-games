@@ -1,0 +1,326 @@
+:root {
+    --primary-color: #FF6B6B;
+    --secondary-color: #4ECDC4;
+    --accent-color: #FFE66D;
+    --background-color: #f7f9fc;
+    --sidebar-bg: #2c3e50;
+    --sidebar-text: #ecf0f1;
+    --text-color: #2c3e50;
+    --card-bg: #ffffff;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    user-select: none;
+    overflow-x: hidden;
+}
+
+.main-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 280px;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+    padding-bottom: 15px;
+}
+
+.sidebar h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.setting-group h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.category-btn, .level-btn {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    padding: 10px;
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    text-align: right;
+    padding-right: 15px;
+    transition: all 0.2s;
+    border-right: 4px solid transparent;
+}
+
+.category-btn:hover, .level-btn:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.category-btn.active, .level-btn.active {
+    background: rgba(255,255,255,0.25);
+    border-right-color: var(--secondary-color);
+    font-weight: bold;
+}
+
+/* Game Container Styling */
+.game-container {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    max-width: 100%;
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+header p {
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card-bg);
+    padding: 15px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+#restart-btn {
+    background-color: var(--secondary-color);
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#restart-btn:hover {
+    transform: scale(1.05);
+}
+
+.game-area {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.shadows-container, .items-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    min-height: 100px;
+}
+
+.shadow-box, .draggable-item {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    font-size: 3.5rem;
+    cursor: grab;
+    transition: all 0.3s ease;
+}
+
+.draggable-item {
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 3px solid transparent;
+}
+
+.draggable-item:active {
+    cursor: grabbing;
+    transform: scale(1.1);
+}
+
+.draggable-item.dragging {
+    opacity: 0.5;
+}
+
+.shadow-box {
+    background-color: #e0e0e0;
+    border: 3px dashed #bbb;
+    color: black;
+}
+
+.shadow-box span {
+    filter: brightness(0); 
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.shadow-box.matched {
+    border-color: var(--secondary-color);
+    background-color: #d1f7f5;
+}
+
+.shadow-box.matched span {
+    filter: none;
+    opacity: 1;
+}
+
+/* Success Message Modal */
+#success-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    z-index: 2000;
+    text-align: center;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#success-message h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+#success-message button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes popIn {
+    from { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: #f00;
+    animation: fall linear forwards;
+    z-index: 1500;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
+
+/* Mobile Responsiveness & Menu */
+.mobile-only {
+    display: none;
+}
+
+#menu-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--sidebar-bg);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+@media (max-width: 768px) {
+    .mobile-only {
+        display: block;
+    }
+
+    .main-wrapper {
+        position: relative;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        transform: translateX(100%); /* Hidden by default on mobile RTL */
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-header button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .game-container {
+        padding-top: 60px;
+    }
+
+    .shadow-box, .draggable-item {
+        width: 70px;
+        height: 70px;
+        font-size: 2.5rem;
+    }
+}
