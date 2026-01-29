@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أين الطريق؟ - Path Memory</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: #333;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 1000;
+        }
+        .back-btn:hover { transform: scale(1.05); }
+    </style>
+    <meta name="color-scheme" content="light only">
+</head>
+<body>
+    <a href="../../index.html" class="back-btn">🏠 الرئيسية</a>
+    <div class="app-container">
+        <header class="game-header">
+            <h1>🗺️ أين الطريق؟</h1>
+            <div class="controls">
+                <div class="control">
+                    <label for="difficulty">الصعوبة</label>
+                    <select id="difficulty">
+                        <option value="easy">سهل (5×5)</option>
+                        <option value="medium" selected>متوسط (6×6)</option>
+                        <option value="hard">صعب (7×7)</option>
+                    </select>
+                </div>
+                <div class="control">
+                    <button id="start-btn" class="primary">ابدأ الجولة ▶</button>
+                    <button id="reset-btn" class="secondary">إعادة المحاولة</button>
+                </div>
+            </div>
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="label">المستوى</span>
+                    <span class="value" id="level">1</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">محاولات صحيحة</span>
+                    <span class="value" id="success-count">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="game-area">
+            <div class="board-wrapper">
+                <div id="grid-board" class="grid-board"></div>
+                <div id="status-text" class="status-text">اضغط ابدأ لمشاهدة الطريق</div>
+            </div>
+            <div class="instructions">
+                <p>💡 راقب الطريق جيداً عندما يومض، ثم حاول رسمه بنفس الترتيب عبر النقر على الخلايا المجاورة بدءاً من نقطة البداية.</p>
+            </div>
+        </main>
+
+        <div id="success-overlay" class="success-overlay">
+            <div class="success-content">
+                <div class="success-icon">🎉</div>
+                <div class="success-message">ممتاز!</div>
+                <div class="success-details">أعدت رسم الطريق بشكل صحيح</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
